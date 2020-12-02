@@ -1,0 +1,42 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+      <ion-item>
+        <ion-icon slot="start" name="moon"></ion-icon>
+        <ion-label>Toggle Dark Theme</ion-label>
+        <ion-toggle slot="end" 
+                    [ngModel]="darkMode"
+                    (ionChange)="cambiarTheme()">
+        </ion-toggle>
+      </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <ion-radio-group [value]="effectOption" (ionChange)="getEffect($event.detail.value)">
+      <ion-list-header>
+        <ion-label>Slide show effects</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Cube</ion-label>
+        <ion-radio slot="start" color="primary" value="slideOptsCube"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Flow</ion-label>
+        <ion-radio slot="start" color="primary" value="slideOptsCoverflow"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Fade</ion-label>
+        <ion-radio slot="start" color="primary" value="slideOptsFade"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Flip</ion-label>
+        <ion-radio slot="start" color="primary" value="slideOptsFlip"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+</ion-content>

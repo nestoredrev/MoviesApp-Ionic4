@@ -22,6 +22,17 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.checkDarkTheme();
     });
   }
+
+  checkDarkTheme() {
+    
+    if(localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.toggle('dark');
+    }
+  }
+
+
+
 }

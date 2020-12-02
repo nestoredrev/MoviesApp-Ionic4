@@ -1,0 +1,26 @@
+
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-grid fixed>
+    
+    
+    <ion-row *ngIf="peliculas.length > 0">
+      <h1>Treding Movies</h1>
+      <ion-col size="12">
+        <app-slideshow [movies]="peliculas"></app-slideshow>
+      </ion-col>
+    </ion-row>
+    
+    
+    <ion-row *ngIf="peliculas.length > 0">
+      <h1>Top 10 Movies</h1>
+      <ion-col size="12">
+        <app-slideshow-horizontal [movies]="peliculas"></app-slideshow-horizontal>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  
+</ion-content>
