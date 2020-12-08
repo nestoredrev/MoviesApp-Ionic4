@@ -1,0 +1,42 @@
+<app-header titulo="Detalle pelicula" [showBackButton]="showBackButton" [searchFavorites]="searchFavorites"></app-header>
+<ion-content>
+    <ion-card *ngFor="let peli of pelicula">
+        <img [src]="peli.poster_path | imagen" [alt]="peli.title">
+        <ion-card-header>
+            <ion-card-title>{{ peli.title }}</ion-card-title>    
+        </ion-card-header>
+        <ion-card-content>
+            Release Date: {{ peli.release_date | date:'dd MMMM yyyy' }}
+            <br>
+            Rate: {{ peli.vote_average | number:'1.1-2' }}
+            <star-rating [value]="peli.vote_average" 
+                            totalstars="10" 
+                            checkedcolor="red" 
+                            uncheckedcolor="black" 
+                            size="12px" 
+                            readonly="false" 
+                            (rate)="onRate($event)"
+                >
+            </star-rating>
+            <p>
+              {{ peli.overview }}
+            </p>
+            <br>
+            <ion-badge color="primary" class="ion-margin-end" *ngFor="let gener of peli.genres">
+              {{ gener.name }}
+            </ion-badge>
+        </ion-card-content>
+    </ion-card>
+
+    <!-- Actores -->
+    <ion-slides pager="false" [options]="slideOpts">
+        <ion-slide *ngFor="let actor of actores">
+          <ion-card>
+            <img [src]="actor.profile_path | imagen" [alt]="actor.name">
+            <ion-card-header>
+              <ion-card-subtitle>{{ actor.name }}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+</ion-content>

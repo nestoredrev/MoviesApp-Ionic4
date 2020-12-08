@@ -1,23 +1,23 @@
 
-<app-header></app-header>
+<app-header titulo="Movies" [showBackButton]="showBackButton" [searchFavorites]="searchFavorites"></app-header>
 
 <ion-content [fullscreen]="true">
   
   <ion-grid fixed>
     
     
-    <ion-row *ngIf="peliculas.length > 0">
-      <h1>Treding Movies</h1>
+    <ion-row *ngIf="cartelera.length > 0">
+      <h1>On the sceens</h1>
       <ion-col size="12">
-        <app-slideshow [movies]="peliculas"></app-slideshow>
+        <app-slideshow [movies]="cartelera"></app-slideshow>
       </ion-col>
     </ion-row>
     
     
-    <ion-row *ngIf="peliculas.length > 0">
-      <h1>Top 10 Movies</h1>
+    <ion-row *ngIf="peliculasMasVotadas.length > 0">
+      <h1>Top rated movies</h1>
       <ion-col size="12">
-        <app-slideshow-horizontal [movies]="peliculas"></app-slideshow-horizontal>
+        <app-slideshow-horizontal [movies]="peliculasMasVotadas"></app-slideshow-horizontal>
       </ion-col>
     </ion-row>
 

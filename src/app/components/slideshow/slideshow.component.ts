@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild, ViewChildren } from '@angular/core
 import { IonSlides } from '@ionic/angular';
 import { Movie } from '../../interfaces/movies-response.interface';
 import { EffectsService } from '../../services/effects/effects.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-slideshow',
@@ -15,19 +16,24 @@ export class SlideshowComponent implements OnInit {
 
   slideOpts: any;
 
-  constructor(private effectsService: EffectsService) {
+  constructor(private effectsService: EffectsService,
+              private router: Router) {
     
   }
 
   ngOnInit() {
     
     setTimeout(() => {
-      console.log("🚀 ~ file: slideshow.component.ts ~ line 24 ~ SlideshowComponent ~ ngOnInit ~ this.slider", this.slider.options)
       this.slider.options = this.effectsService.Effect;
-    }, 1000);
+    }, 500);
 
     this.slideOpts = this.effectsService.Effect;
-    console.log(this.slideOpts);
-    console.log(this.movies);
   }
+
+  getMovie(movie: Movie) {
+    const url = this.router.url;
+    const movieId = movie.id;
+    this.router.navigateByUrl(`${url}/pelicula/${movieId}`);
+  }
+
 }

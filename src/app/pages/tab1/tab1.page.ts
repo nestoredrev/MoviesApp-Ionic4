@@ -9,18 +9,27 @@ import { MoviesService } from '../../services/movies.service';
 })
 export class Tab1Page implements OnInit {
 
-  public peliculas: Movie[] = [];
+  public cartelera: Movie[] = [];
+  public peliculasMasVotadas: Movie[] = [];
+  searchFavorites:boolean = true;
 
   constructor(private moviesService: MoviesService) {
   }
-
+  
   ngOnInit() {
-    this.obtenerPeliculas();
+    this.obtenerCartelera();
+    this.obtenerPeliculasMasVotadas();
   }
 
-  obtenerPeliculas() {
-    this.moviesService.getTopMovies().subscribe( peliculas => {
-      this.peliculas = peliculas;
+  obtenerCartelera() {
+    this.moviesService.getNowPlayingMovies().subscribe( peliculas => {
+      this.cartelera = peliculas;
+    })
+  }
+
+  obtenerPeliculasMasVotadas() {
+    this.moviesService.getTopRatedMovies().subscribe( peliculas => {
+      this.peliculasMasVotadas = peliculas;
     })
   }
 }

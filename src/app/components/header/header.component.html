@@ -1,13 +1,24 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="showBackButton">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title size="large">{{titulo}}</ion-title>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="searchFavorites">
     <ion-item>
       <ion-icon slot="end" name="search"></ion-icon>
       <ion-input type="text"
                   placeholder="Search movie..." 
-                  (keyup)="buscar(txtTermino.value)" 
+                  (keyup.enter)="buscar(txtTermino.value)" 
                   #txtTermino
       >
       </ion-input>
     </ion-item>
   </ion-toolbar>
 </ion-header>
+
+
+
+
+

@@ -1,7 +1,7 @@
 <ion-slides pager="false" [options]="slideOpts" *ngIf="slideOpts">
   <ion-slide *ngFor="let movie of movies">
     <ion-card (click)="getMovie(movie)">
-      <img [src]="movie.poster_path | domseguro:'https://image.tmdb.org/t/p/w500' | noimage:movie" [alt]="movie.title">
+      <img [src]="movie.poster_path | imagen" [alt]="movie.title">
       <ion-card-header>
         <ion-card-subtitle>{{ (movie.original_title.length>10) ? (movie.original_title | slice:0:10)+'...' : (movie.original_title) }}</ion-card-subtitle>
       </ion-card-header>
